@@ -4,7 +4,7 @@ import requests # This needs to be installed with pip
 class CurrencyConverter:
     def __init__(self):
         """
-        When a currency converted is created it should first try to load currency data from JSON (using the load_currency_data-method)
+        When a currency converter is created it should first try to load currency data from JSON (using the load_currency_data-method)
         If it doesn't find any json-data, it should try to get the data from the exchangerates API (using the fetch_currency_data-method)
         """
         pass
