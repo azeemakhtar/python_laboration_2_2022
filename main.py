@@ -24,6 +24,7 @@ class CurrencyConverter:
     def convert_from_usd(self, to_currency):
         """
         This method should convert from USD to a currency of choice
+        You should not use an additional endpoint, the latest currencies are enough.
         """
         pass
             
