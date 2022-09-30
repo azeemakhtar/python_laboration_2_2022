@@ -9,7 +9,7 @@ class CurrencyConverter:
         """
         pass
     
-    def fetch_currency_data():
+    def fetch_currency_data(self):
         """
         This method should fetch new currency data using the openexchangerate API
         It has some boilerplate code you can use.
