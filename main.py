@@ -21,14 +21,14 @@ class CurrencyConverter:
         response = requests.get(url, headers=headers)
         pass
     
-    def convert_from_usd(self, to_currency):
+    def convert_from_usd(self, to_currency, amount):
         """
         This method should convert from USD to a currency of choice
         You should not use an additional endpoint, the latest currencies are enough.
         """
         pass
             
-    def convert_any_currency(self, from_currency, to_currency):
+    def convert_any_currency(self, from_currency, to_currency, amount):
         """
         This method is not required for Godkänt (G) grade
                 
