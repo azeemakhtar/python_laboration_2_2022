@@ -16,7 +16,7 @@ class CurrencyConverter:
         """
         # Use this code to fetch currency data from openexchangerates.org.
         app_id = "YOUR_APP_ID" # Add your own app_id from openexchangerates.org here
-        url = f"https://openexchangerates.org/api/latest.json?app_id={app_id}"
+        url = f"https://openexchangerates.org/api/latest.json?app_id={e51b35554f8443ac9929f62fe6239e10}"
         headers = {"accept": "application/json"} # This needs to be added, it tells the API that they should return JSON
         response = requests.get(url, headers=headers)
         pass
