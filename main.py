@@ -90,5 +90,5 @@ if __name__ == "__main__":
     
     App(converter)
     main()
-    #sync my chages to github. let this be synced
+    #sync my chages to github. the right connection with Nackademin
     
