@@ -1,4 +1,6 @@
 import requests # This needs to be installed with pip
+import tkinter as tk
+
 # DO NOT UPLOAD A VIRTUAL ENVIRONMENT TO GIT
 
 class CurrencyConverter:
