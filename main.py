@@ -1,11 +1,14 @@
 import requests # This needs to be installed with pip
+from tkinter import *
 import tkinter as tk
+from tkinter import ttk
+
 
 # DO NOT UPLOAD A VIRTUAL ENVIRONMENT TO GIT
 
 class CurrencyConverter:
     def __init__(self, url):
-        self.data= requests.get(url).json()
+        self.data= requests.get(url, verify=False).json()
         self.currecies= self.data['rates']
         """
         When a currency converter is created it should first try to load currency data from JSON (using the load_currency_data-method)
@@ -18,10 +21,10 @@ class CurrencyConverter:
         It has some boilerplate code you can use.
         """
         # Use this code to fetch currency data from openexchangerates.org.
-        app_id = "YOUR_APP_ID" # Add your own app_id from openexchangerates.org here
-        url = f"https://openexchangerates.org/api/latest.json?app_id={e51b35554f8443ac9929f62fe6239e10}"
+        app_id = "eafd01d91db74dde8db1f329d1d1a2f7" # Add your own app_id from openexchangerates.org here
+        url = f"https://openexchangerates.org/api/latest.json?app_id={eafd01d91db74dde8db1f329d1d1a2f7}"
         headers = {"accept": "application/json"} # This needs to be added, it tells the API that they should return JSON
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, verify=False)
     
     def convert_from_usd(self, to_currency, amount):
 
@@ -88,7 +91,9 @@ def main():
 if __name__ == "__main__":
     #this is the main function
     url = 'https://api.exchangerate-api.com/v4/latest/USD'
-    converter = RealTimeCurrencyConverter(url)
+    result = requests.get(url, verify=False)
+    converter = RealTimeCurrencyConverter(result)
+
     
     App(converter)
     main()
