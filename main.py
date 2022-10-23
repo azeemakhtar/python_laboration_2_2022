@@ -1,8 +1,6 @@
+from lib2to3.pytree import convert
+from site import USER_SITE
 import requests # This needs to be installed with pip
-from tkinter import *
-import tkinter as tk
-from tkinter import ttk
-
 
 # DO NOT UPLOAD A VIRTUAL ENVIRONMENT TO GIT
 
@@ -22,28 +20,33 @@ class CurrencyConverter:
         """
         # Use this code to fetch currency data from openexchangerates.org.
         app_id = "eafd01d91db74dde8db1f329d1d1a2f7" # Add your own app_id from openexchangerates.org here
-        url = f"https://openexchangerates.org/api/latest.json?app_id={eafd01d91db74dde8db1f329d1d1a2f7}"
+        url = 'https://openexchangerates.org/api/latest.json?app_id={eafd01d91db74dde8db1f329d1d1a2f7'
         headers = {"accept": "application/json"} # This needs to be added, it tells the API that they should return JSON
         response = requests.get(url, headers=headers, verify=False)
+        convert_into_json = response.json()
     
-    def convert_from_usd(self, to_currency, amount):
+    def convert_from_usd(self, from_currency, to_currency, amount):
+        initial_amount = amount
+        if from_currency == 'USD':
+            amount = amount / self.currecies[to_currency]
 
+        amount = round(amount * self.currencies[to_currency], 4)
         """
         This method should convert from USD to a currency of choice
         You should not use an additional endpoint, the latest currencies are enough.
         """
-        pass
             
     def convert_any_currency(self, from_currency, to_currency, amount):
         initial_amount = amount
         #fisrt convert it to USD if it is not in USD since USD is the base currency for conversion rate
-        #this method takes arguments the currency you wan to convets from, the currency in which you wan tot convert, and the amount you wan to convert
+        #this method takes arguments the currency you want to convets from, the currency in which you want to convert, and the amount you wan to convert
         
         if from_currency != 'USD':
             amount = amount / self.currecies[from_currency]
 
         #limiting the precision to 4 decimal places
         amount = round(amount * self.currecies[to_currency], 4)
+        return amount
 
         """
         This method is not required for Godkänt (G) grade
@@ -54,10 +57,13 @@ class CurrencyConverter:
         """
     
     def list_currencies(self):
+
+        curl --request GET 'https://api.apilayer.com/exchangerates_data/live?base=USD&symbols=EUR,GBP' \
+--header 'apikey: YOUR API KEY'
         """
         This method lists available currencies in alphabetical order
         """
-        pass
+        
     
     def load_currency_data(self):
         """
@@ -78,24 +84,24 @@ class CurrencyConverter:
         pass
     
 def main():
-    """
-    This function should contain a menu allowing the user to
-    [0] - (G) List all currencies
-    [1] - (G) Convert USD to a currency of choice
-    [2] - (G) Refresh the data (fetch new currency data, this is because the API updates new currency rates every hour)
-    [3] - (G) Export the data to JSON
-    [4] - (VG) Convert from any currency to any currency that is available on the API
-    """
-    pass
+    #This function should contain a menu allowing the user to
+    print("[0] - (G) List all currencies")
+    print("[1] - (G) Convert USD to a currency of choice")
+    print("[2] - (G) Refresh the data (fetch new currency data, this is because the API updates new currency rates every hour)")
+    print("[3] - (G) Export the data to JSON")
+    print("[4] - (VG) Convert from any currency to any currency that is available on the API")
+
     
 if __name__ == "__main__":
     #this is the main function
-    url = 'https://api.exchangerate-api.com/v4/latest/USD'
-    result = requests.get(url, verify=False)
-    converter = RealTimeCurrencyConverter(result)
+    user_input = int(input())
+    if user_input == 0:
+       
+       list_currencies()
 
-    
-    App(converter)
+
     main()
-    #sync my chages to github. the right connection with Nackademin
     
+    #url = 'https://api.exchangerate-api.com/v4/latest/USD'
+    #result = requests.get(url, verify=False)
+    #converter = RealTimeCurrencyConverter(result) 
