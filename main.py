@@ -1,8 +1,6 @@
 from lib2to3.pytree import convert
 from site import USER_SITE
-import requests # This needs to be installed with pip
-
-# DO NOT UPLOAD A VIRTUAL ENVIRONMENT TO GIT
+import requests
 
 class CurrencyConverter:
     def __init__(self, url):
