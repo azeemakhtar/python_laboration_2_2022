@@ -8,6 +8,7 @@ urllib3.disable_warnings()
 
 class CurrencyConverter:
     def __init__(self, url):
+
         self.data= requests.get(url, verify=False).json()
         self.currecies= self.data['rates']
         """
@@ -42,14 +43,23 @@ class CurrencyConverter:
         initial_amount = amount
         #fisrt convert it to USD if it is not in USD since USD is the base currency for conversion rate
         #this method takes arguments the currency you want to convets from, the currency in which you want to convert, and the amount you wan to convert
-        
+        url = "https://api.apilayer.com/exchangerates_data/convert?to={to_currency}&from={from_currency}&amount={amount}"
+
+        payload = {}
+        headers= {
+        "apikey": "XsCzsB7NXiQN2t64c5t3yD4flb7cruid"
+        }
+        response = requests.request("GET", url, verify=False, headers=headers, data = payload)
+
+        status_code = response.status_code
+        result = response.json()
+
         if from_currency != 'USD':
             amount = amount / self.currecies[from_currency]
 
         #limiting the precision to 4 decimal places
         amount = round(amount * self.currecies[to_currency], 4)
-        return amount
-
+        return amount      
         """
         This method is not required for Godkänt (G) grade
                 
